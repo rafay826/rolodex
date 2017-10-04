@@ -18,7 +18,8 @@ export class ContactsEditComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.contactService.getContact(this.route.snapshot.paramMap.get('id'))
+    this.route.data
+      .map(param => param['contact'])
       .subscribe(contact => this.contact = contact);
   }
 
@@ -32,7 +33,7 @@ export class ContactsEditComponent implements OnInit {
   }
 
   private goToDetails(contact: Contact) {
-    this.router.navigate((['/contact', contact.id]));
+    this.router.navigate((['/', contact.id]));
   }
 
 }

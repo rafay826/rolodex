@@ -10,6 +10,10 @@ import 'rxjs/add/operator/switchMap';
 import {API_ENDPOINT} from '../app.token';
 import {Contact, ContactsResponse, ContactResponse} from '@app/models/contact';
 
+export function ConfirmNavigation() {
+  return window.confirm('Are you sure you want to save your changes?');
+}
+
 @Injectable()
 export class ContactService {
 
