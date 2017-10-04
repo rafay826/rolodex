@@ -13,12 +13,14 @@ import {appRoutes} from '@app/app.routes';
 import { ContactsComponent } from './contacts-list/contacts-list.component';
 import {ContactService} from '@app/shared/contact.service';
 import { ContactsDetailComponent } from './contacts-detail/contacts-detail.component';
+import { ContactsEditComponent } from './contacts-edit/contacts-edit.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ContactsComponent,
-    ContactsDetailComponent
+    ContactsDetailComponent,
+    ContactsEditComponent
   ],
   imports: [
     BrowserModule,

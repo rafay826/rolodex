@@ -1,6 +1,11 @@
 :host {
   display: block;
 
+  a {
+    color: white;
+    text-decoration: none;
+  }
+
 /deep/ .trm-floating-button {
   position: absolute;
   right: 2em;

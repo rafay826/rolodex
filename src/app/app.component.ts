@@ -1,9 +1,11 @@
 import {Component} from '@angular/core';
 
 @Component({
-  selector: 'app-root',
+  selector: 'rolodex-root',
   template: `
-    <md-toolbar color="primary">Contacts</md-toolbar>
+    <md-toolbar color="primary">
+      <a routerLink="/">Rolodex</a>
+    </md-toolbar>
     <router-outlet></router-outlet>
   `,
   styleUrls: ['./app.component.scss']

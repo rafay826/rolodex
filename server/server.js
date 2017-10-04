@@ -34,7 +34,7 @@ app.get('/api/contacts', (req, res) => {
   res.json(multiResponse(db));
 });
 
-app.post('/api/contacts-list', (req, res) => {
+app.post('/api/contacts', (req, res) => {
   if (isContact(req.body)) {
     req.body.id = getNextId();
     req.body.image = '/assets/images/placeholder.png';
@@ -62,12 +62,12 @@ app.get('/api/search', (req, res) => {
   delayedRequest = !delayedRequest;
 });
 
-app.get('/api/contacts-list/:id', (req, res) => {
+app.get('/api/contacts/:id', (req, res) => {
   const contact = db.find(contact => contact.id ==req.params.id);
   contact ? res.json(singleResponse(contact)) : handleError(res, 'contact not found');
 })
 
-app.put('/api/contacts-list/:id', (req, res) => {
+app.put('/api/contacts/:id', (req, res) => {
   const contact = db.find(contact => contact.id == req.params.id);
   if (contact) {
     Object.assign(contact, req.body);
