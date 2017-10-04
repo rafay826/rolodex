@@ -69,11 +69,10 @@ app.get('/api/contacts/:id', (req, res) => {
 })
 
 app.put('/api/contacts/:id', (req, res) => {
-  const contact = db.find(contact => contact.id == req.params.id);
+  let contact = db.find(contact => contact.id == req.params.id);
   if (contact) {
     Object.assign(contact, req.body);
-    console.log(res.body);
-    // res.json(singleResponse(contact));
+    res.json(singleResponse(contact));
   } else {
     handleError(res, 'contact not found');
   }
