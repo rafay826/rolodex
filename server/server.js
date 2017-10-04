@@ -1,8 +1,12 @@
-const db = require('./data/contacts.json');
+const dbPath = './data/contacts.json';
+const db = require(dbPath);
 const bodyParser = require('body-parser');
 const express = require('express');
 const cors = require('cors');
+const jsonfile = require('jsonfile');
 const app = express();
+app.use(cors());
+app.use(bodyParser.json());
 
 const multiResponse = (items) => { return { items: items } };
 const singleResponse = (item) => { return { item: item } };
@@ -26,9 +30,6 @@ const unorderedResponse = process.argv.includes('--unordered-response');
 if (unorderedResponse) {
   console.log('Serving search results unordered')
 }
-
-app.use(cors());
-app.use(bodyParser.json());
 
 app.get('/api/contacts', (req, res) => {
   res.json(multiResponse(db));
@@ -71,7 +72,8 @@ app.put('/api/contacts/:id', (req, res) => {
   const contact = db.find(contact => contact.id == req.params.id);
   if (contact) {
     Object.assign(contact, req.body);
-    res.json(singleResponse(contact));
+    console.log(res.body);
+    // res.json(singleResponse(contact));
   } else {
     handleError(res, 'contact not found');
   }

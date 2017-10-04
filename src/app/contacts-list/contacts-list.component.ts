@@ -21,7 +21,6 @@ export class ContactsComponent implements OnInit {
   ngOnInit() {
     this.contacts$ = this.contactService.search(this.terms$)
       .merge(this.contactService.getContacts());
-    this.contacts$.subscribe(res => console.log(res));
   }
 
   trackByContactId(index, contact): Contact {

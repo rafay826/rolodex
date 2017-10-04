@@ -25,7 +25,9 @@ export class ContactsEditComponent implements OnInit {
 
   save(contact: Contact) {
     this.contactService.updateContact(contact)
-      .subscribe(() => this.goToDetails(contact));
+      .subscribe(() => {
+        this.goToDetails(contact);
+      });
   }
 
   cancel(contact: Contact) {

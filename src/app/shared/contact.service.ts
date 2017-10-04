@@ -1,5 +1,5 @@
 import {Inject, Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
@@ -31,7 +31,8 @@ export class ContactService {
   }
 
   updateContact(contact: Contact): Observable<Contact> {
-    return this.http.put<ContactResponse>(`${this.apiEndpoint}/contacts/${contact.id}`, contact)
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.put<ContactResponse>(`${this.apiEndpoint}/contacts/${contact.id}`, contact, {headers})
       .map(data => data.item);
   }
 
